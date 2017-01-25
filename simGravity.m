@@ -29,7 +29,6 @@ function obj = calcMotion(obj,n,dt)
                 distance = obj(k,2:4) - obj(j,2:4);
                 velocity = velocity + G*dt*distance*obj(k,1)/(norm(distance)^3);
             end
-    
         end
     end
 end
