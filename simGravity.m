@@ -7,9 +7,14 @@ function simGravity
     obj(3,:) = [2,0,1,0,0.5,0,0.5];
     for k = 1:T
         obj = calcMotion(obj,n,dt);
-        scatter3(obj(:,2),obj(:,3),obj(:,4),'o','filled','MarkerEdgeColor','k');
+        color = zeros(n,3);
+        for k = 1:n
+            color(k,:) = abs(sin(obj(k,1)/max(obj(:,1)) + [0 pi/3 2*pi/3]));
+        end
+        scatter3(obj(:,2),obj(:,3),obj(:,4),10,color,'filled');
         whitebg('k');
         set(gca,'XTickLabel',[],'YTickLabel',[],'ZTickLabel',[]);
+        grid on; grid minor;
         axis([-5 5 -5 5 -5 5]);
         pause(0.001);
     end
