@@ -5,7 +5,7 @@ function simGravity
     obj(1,:) = [1.5,1,1,0,-0.6,0,0.8];
     obj(2,:) = [1,-1,0,0,0.6,-0.7,0];
     obj(3,:) = [2,0,1,0,0.5,0,0.5];
-    for k = 1:T
+    for j = 1:T
         obj = calcMotion(obj,n,dt);
         color = zeros(n,3);
         for k = 1:n
