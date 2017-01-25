@@ -1,16 +1,16 @@
 function simGravity
     n = 2; 
-    obj = zeros(n,7);
-    obj(1,:) = [3,1,0,0,0,0,-0.5];
-    obj(2,:) = [3,-1,0,0,0,0,0.5];
+    objets = zeros(n,7);
+    objets(1,:) = [100,0,0,0,0,0,0];
+    objets(2,:) = [0.1,-0.8,0,0,0,0,10];
     color = zeros(n,3);
     for i = 1:n
-        color(i,:) = abs(sin(obj(i,1)/max(obj(:,1)) + [0 pi/3 2*pi/3]));
+        color(i,:) = abs(sin(objets(i,1)/max(objets(:,1)) + [0 pi/3 2*pi/3]));
     end
     T = 620; dt = 0.01;
     for j = 1:T
-        obj = calcMotion(obj,n,dt);
-        scatter3(obj(:,2),obj(:,3),obj(:,4),10,color,'filled');
+        objets = calcMotion(objets,n,dt);
+        scatter3(objets(:,2),objets(:,3),objets(:,4),10,color,'filled');
         whitebg('k');
         set(gca,'XTickLabel',[],'YTickLabel',[],'ZTickLabel',[]);
         grid on; grid minor;
@@ -19,19 +19,19 @@ function simGravity
     end
 end
  
-function obj = calcMotion(obj,n,dt)
+function objects = calcMotion(objects,n,dt)
     for i = 1:n
-        obj(i,5:7) = calcVelocity(i);
-        obj(i,2:4) = obj(i,2:4) + obj(i,5:7)*dt;
+        objects(i,5:7) = calcVelocity(i);
+        objects(i,2:4) = objects(i,2:4) + objects(i,5:7)*dt;
     end
     
     function velocity = calcVelocity(j)
         G = 1;
-        velocity = obj(j,5:7);
+        velocity = objects(j,5:7);
         for k = 1:n
             if k ~= j
-                distance = obj(k,2:4) - obj(j,2:4);
-                velocity = velocity + G*dt*distance*obj(k,1)/(norm(distance)^3);
+                distance = objects(k,2:4) - objects(j,2:4);
+                velocity = velocity + G*dt*distance*objects(k,1)/(norm(distance)^3);
             end
         end
     end
