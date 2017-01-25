@@ -1,8 +1,8 @@
 function simGravity
     n = 2; 
     objets = zeros(n,7);
-    objets(1,:) = [100,0,0,0,0,0,0];
-    objets(2,:) = [0.1,-0.8,0,0,0,0,10];
+    objets(1,:) = [10,0,0,0,0,0,-0.35];
+    objets(2,:) = [1,-0.8,0,0,0,0,3.5];
     color = zeros(n,3);
     for i = 1:n
         color(i,:) = abs(sin(objets(i,1)/max(objets(:,1)) + [0 pi/3 2*pi/3]));
