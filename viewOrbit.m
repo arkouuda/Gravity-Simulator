@@ -13,8 +13,8 @@ function viewOrbit
         scatter3(objects(:,2),objects(:,3),objects(:,4),25,color,'.');
         hold on;
         if isequal(showCenter,'yes')
-        center = calcCenterOfMass(objects,n);
-        plot3(center(1),center(2),center(3),'w.','MarkerSize',3);
+            center = calcCenterOfMass(objects,n);
+            plot3(center(1),center(2),center(3),'w.','MarkerSize',3);
         end
         whitebg('k');
         set(gca,'XTickLabel',[],'YTickLabel',[],'ZTickLabel',[]);
