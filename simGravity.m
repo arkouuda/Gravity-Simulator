@@ -1,16 +1,16 @@
 function simGravity
     n = 2; 
-    objets = zeros(n,7);
-    objets(1,:) = [10,0,0,0,0,0,-0.35];
-    objets(2,:) = [1,-0.8,0,0,0,0,3.5];
+    objects = zeros(n,7);
+    objects(1,:) = [10,0,0,0,0,0,-0.35];
+    objects(2,:) = [1,-0.8,0,0,0,0,3.5];
     color = zeros(n,3);
     for i = 1:n
-        color(i,:) = abs(sin(objets(i,1)/max(objets(:,1)) + [0 pi/3 2*pi/3]));
+        color(i,:) = abs(sin(objects(i,1)/max(objects(:,1)) + [0 pi/3 2*pi/3]));
     end
     T = 620; dt = 0.01;
     for j = 1:T
-        objets = calcMotion(objets,n,dt);
-        scatter3(objets(:,2),objets(:,3),objets(:,4),10,color,'filled');
+        objects = calcMotion(objects,n,dt);
+        scatter3(objects(:,2),objects(:,3),objects(:,4),10,color,'filled');
         whitebg('k');
         set(gca,'XTickLabel',[],'YTickLabel',[],'ZTickLabel',[]);
         grid on; grid minor;
