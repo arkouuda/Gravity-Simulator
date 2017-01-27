@@ -8,6 +8,7 @@ function simGravity
         color(i,:) = abs(sin(objects(i,1)/max(objects(:,1)) + [0 pi/3 2*pi/3]));
     end
     T = 620; dt = 0.01;
+    figure;
     for j = 1:T
         objects = calcMotion(objects,n,dt);
         scatter3(objects(:,2),objects(:,3),objects(:,4),10,color,'filled');
